@@ -1,0 +1,295 @@
+ASSESSMENT-1
+SET-A
+1.Write a R program to create a vector of a specified type and length. Create
+vector of numeric, complex, logical and character types of length 6 with
+your own examples. print the vector, type, and length.
+Use this vector for Below program
+x = c(10, 20, 30, 20, 20, 25, 9, 26,38,40)
+x = vector(&quot;numeric&quot;, 5)
+print(&quot;Numeric Type:&quot;)
+[1] &quot;Numeric Type:&quot;
+print(x)
+[1] 0 0 0 0 0
+c = vector(&quot;complex&quot;, 5)
+print(&quot;Complex Type:&quot;)
+[1] &quot;Complex Type:&quot;
+print(c)
+[1] 0+0i 0+0i 0+0i 0+0i 0+0i
+l = vector(&quot;logical&quot;, 5)
+print(&quot;Logical Type:&quot;)
+[1] &quot;Logical Type:&quot;
+print(l)
+[1] FALSE FALSE FALSE FALSE FALSE
+chr = vector(&quot;character&quot;, 5)
+print(&quot;Character Type:&quot;)
+[1] &quot;Character Type:
+print(chr)
+[1] &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;
+x = vector(&quot;numeric&quot;, 10)
+&gt; print(&quot;Numeric Type:&quot;)
+[1] &quot;Numeric Type:&quot;
+&gt; print(x)
+[1] 0 0 0 0 0 0 0 0 0 0
+&gt; print(&quot;Complex Type:&quot;)
+[1] &quot;Complex Type:&quot;
+&gt; c = vector(&quot;complex&quot;, 10)
+&gt; print(&quot;Complex Type:&quot;)
+[1] &quot;Complex Type:&quot;
+&gt; print(c)
+[1] 0+0i 0+0i 0+0i 0+0i 0+0i 0+0i 0+0i 0+0i 0+0i 0+0i
+&gt; print(&quot;Logical Type:&quot;)
+[1] &quot;Logical Type:&quot;
+&gt; l = vector(&quot;logical&quot;, 10)
+&gt; print(l)
+[1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+&gt; chr = vector(&quot;character&quot;, 10)
+&gt; print(&quot;Character Type:&quot;)
+
+[1] &quot;Character Type:&quot;
+&gt; print(chr)
+[1] &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;
+2. Write a R program to find Sum, Mean and Product of a Vector
+x = c(10, 20, 30)
+&gt; print(&quot;Sum:&quot;)
+[1] &quot;Sum:&quot;
+&gt; print(sum(x))
+[1] 60
+&gt; print(&quot;Mean:&quot;)
+[1] &quot;Mean:&quot;
+&gt; print(mean(x))
+[1] 20
+&gt; print(&quot;Product:&quot;)
+[1] &quot;Product:&quot;
+&gt; print(prod(x))
+3. Write a R program to find the minimum and the maximum of a Vector
+x = c(10, 20, 30, 25, 9, 26)
+&gt; print(&quot;Original Vectors:&quot;)
+[1] &quot;Original Vectors:&quot;
+&gt; print(x)
+[1] 10 20 30 25 9 26
+&gt; print(&quot;Maximum value of the above Vector:&quot;)
+[1] &quot;Maximum value of the above Vector:&quot;
+&gt; print(max(x))
+[1] 30
+&gt; print(&quot;Minimum value of the above Vector:&quot;)
+[1] &quot;Minimum value of the above Vector:&quot;
+&gt; print(min(x))
+4.Write a R program to find second highest value in a given vector.
+x = c(10, 20, 30, 20, 20, 25, 9, 26)
+&gt; print(&quot;Original Vectors:&quot;)
+[1] &quot;Original Vectors:&quot;
+&gt; print(x)
+[1] 10 20 30 20 20 25 9 26
+&gt; print(&quot;Find second highest value in a given vector:&quot;)
+[1] &quot;Find second highest value in a given vector:&quot;
+&gt; l = length(x)
+&gt; print(sort(x, partial = l-1)[l-1])
+
+5. Write a R program to add a new item g4 = &amp;quot;C++&amp;quot; to a given list.
+Sample list: (g1 = 5:10, g2 = &amp;quot;R Programming&amp;quot;, g3 = &amp;quot;HTML&amp;quot;)
+list1 = list(g1 = 1:10, g2 = &quot;R Programming&quot;, g3 = &quot;HTML&quot;)
+print(&quot;Original list:&quot;)
+print(list1)
+print(&quot;Add a new vector to the said list:&quot;)
+list1$g4 = &quot;Python&quot;
+print(list1)
+Output:
+
+[1] 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+[1] &quot;python&quot;
+[1] &quot;HTML&quot;
+[1] &quot;g4=R Program
+6. Write a R program to extract all elements except the third element of the
+first vector of a given list.
+Sample list: (g1 = 5:10, g2 = &amp;quot;R Programming&amp;quot;, g3 = &amp;quot;HTML&amp;quot;)
+list1 = list(g1 = 1:10, g2 = &quot;R Programming&quot;, g3 = &quot;HTML&quot;)
+print(&quot;Original list:&quot;)
+print(list1)
+print(&quot;First vector:&quot;)
+print(list1$g1)
+print(&quot;First vector without third element:&quot;)
+list1$g1 = list1$g1[-3]
+print(list1$g1)
+Output:
+[1] &quot;Original list:&quot;
+$g1
+[1] 1 2 3 4 5 6 7 8 9 10
+$g2
+[1] &quot;R Programming&quot;
+$g3
+[1] &quot;HTML&quot;
+[1] &quot;First vector:&quot;
+[1] 1 2 3 4 5 6 7 8 9 10
+[1] &quot;First vector without third element:&quot;
+[1] 1 2 4 5 6 7 8 9 10
+7.Write a R program to create an ordered factor from data consisting of the
+names of months
+mons_v =
+c(&amp;quot;March&amp;quot;,&amp;quot;April&amp;quot;,&amp;quot;January&amp;quot;,&amp;quot;November&amp;quot;,
+&amp;quot;January&amp;quot;,
+&amp;quot;September&amp;quot;,&amp;quot;October&amp;quot;,&amp;quot;September&amp;quot;,&amp;quot;November&amp;
+quot;,&amp;quot;August&amp;quot;,&amp;quot;February&amp;quot;,
+&amp;quot;January&amp;quot;,&amp;quot;November&amp;quot;,&amp;quot;November&amp;quot;,&amp;quot;February&amp;qu
+ot;,&amp;quot;May&amp;quot;,&amp;quot;August&amp;quot;,&amp;quot;Februa
+r
+y&amp;quot;,&amp;quot;July&amp;quot;,&amp;quot;December&amp;quot;,&amp;quot;August&amp;quot;,&amp;quot;August&amp;q
+uot;,&amp;quot;September&amp;quot;,&amp;quot;November&amp;quot;,&amp;quot;Se
+p tember&amp;quot;,&amp;quot;February&amp;quot;,&amp;quot;April&amp;quot;)
+
+mons_v = c(&quot;March&quot;,&quot;April&quot;,&quot;January&quot;,&quot;November&quot;,&quot;January&quot;,
+&quot;September&quot;,&quot;October&quot;,&quot;September&quot;,&quot;November&quot;,&quot;August&quot;,&quot;February&quot;,
+&quot;January&quot;,&quot;November&quot;,&quot;November&quot;,&quot;February&quot;,&quot;May&quot;,&quot;August&quot;,&quot;February&quot;,
+&quot;July&quot;,&quot;December&quot;,&quot;August&quot;,&quot;August&quot;,&quot;September&quot;,&quot;November&quot;,&quot;September&quot;,
+&quot;February&quot;,&quot;April&quot;)
+print(&quot;Original vector:&quot;)
+print(mons_v) f = factor(mons_v)
+print(&quot;Ordered factors of the said vector:&quot;)
+print(f)
+print(table(f))
+
+Output:
+“March” &quot;May&quot; &quot;August&quot; &quot;February&quot; &quot;July&quot; &quot;December&quot;
+[21] &quot;August&quot; &quot;August&quot; &quot;September&quot; &quot;November&quot; &quot;September&quot;
+[26] &quot;February&quot; &quot;April&quot;
+[1] &quot;Original vector:&quot;
+[1] &quot;March&quot; &quot;April&quot; &quot;January&quot; &quot;November&quot; &quot;January&quot;
+[6] &quot;September&quot; &quot;October&quot; &quot;September&quot; &quot;November&quot; &quot;August&quot;
+[11] &quot;February&quot; &quot;January&quot; &quot;November&quot; &quot;November&quot; &quot;February&quot;
+[16]
+[1] &quot;Ordered factors of the said vector:&quot;
+[1] March April January November January September October
+[8] September November August February January November November
+[15] February May August February July December August
+[22] August September November September February April
+11 Levels: April August December February January July March ... September
+April August December February January July March
+2 4 1 4 3 1 1
+May November October September
+1 5 1 4
+SET-2
+1.Write a R program to create a vector of a specified type and length. Create
+vector of numeric, complex, logical and character types of length 6. Use
+this vector for Below program
+x = c(30, 20, 20, 25, 9, 26,38,40)
+x = vector(&quot;numeric&quot;, 5)
+print(&quot;Numeric Type:&quot;)
+[1] &quot;Numeric Type:&quot;
+print(x)
+[2] 0 0 0 0 0
+c = vector(&quot;complex&quot;, 5)
+print(&quot;Complex Type:&quot;)
+[1] &quot;Complex Type:&quot;
+print(c)
+[1] 0+0i 0+0i 0+0i 0+0i 0+0i
+l = vector(&quot;logical&quot;, 5)
+print(&quot;Logical Type:&quot;)
+[2] &quot;Logical Type:&quot;
+print(l)
+[1] FALSE FALSE FALSE FALSE FALSE
+chr = vector(&quot;character&quot;, 5)
+print(&quot;Character Type:&quot;)
+[2] &quot;Character Type:
+print(chr)
+[2] &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;
+x = vector(&quot;numeric&quot;, 8)
+
+print(&quot;Numeric Type:&quot;)
+print(x)
+c = vector(&quot;complex&quot;,8 )
+print(&quot;Complex Type:&quot;)
+print(c)
+l = vector(&quot;logical&quot;, 8)
+print(&quot;Logical Type:&quot;)
+print(l)
+chr = vector(&quot;character&quot;, 8)
+print(&quot;Character Type:&quot;)
+print(chr)
+Output:
+[1] &quot;Numeric Type:&quot;
+[1] 0 0 0 0 0 0 0 0
+[1] &quot;Complex Type:&quot;
+[1] [1] 0+0i 0+0i 0+0i 0+0i 0+0i 0+0i 0+0i 0+0i
+[1] &quot;Logical Type:&quot;
+[1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[1] &quot;Character Type:&quot;
+[1] &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;
+2. Write a R program to find Sum, Mean and Product of a Vector.
+
+vec = c(1, 2, 3 , 4)
+&gt; print(&quot;Sum of the vector:&quot;)
+&gt; print(sum(vec))
+&gt; print(&quot;Mean of the vector:&quot;)
+&gt; print(mean(vec))
+&gt; print(&quot;Product of the vector:&quot;)
+&gt; print(prod(vec))
+Output:
+[1] &quot;Sum of the vector:&quot;
+[1] 10
+[1] &quot;Mean of the vector:&quot;
+[1] 2.5
+[1] &quot;Product of the vector:&quot;
+[1] 24
+3. Write a R program to add a new item g4 = &amp;quot;R Prog&amp;quot; to a given list.
+Sample list: (g1 = 1:20, g2 = &amp;quot;Python&amp;quot;, g3 = &amp;quot;HTML&amp;quot;)
+li&lt;-list(g1=1:20,g2=&quot;python&quot;,g3=&quot;HTML&quot;)
+a&lt;-append(li,g4=R Program)
+a
+Output:
+[1] 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+[1] &quot;python&quot;
+[1] &quot;HTML&quot;
+[1] &quot;g4=R Program&quot;
+4. Write a R program to extract all elements except the second element of the
+first vector of a given list.
+Sample list: (g1 = 1:20, g2 = &amp;quot; Python &amp;quot;, g3 = &amp;quot;HTML&amp;quot;)
+
+mylist=append(mylist,g5,length(mylist))
+print(mylist)
+Output:
+$g1 [1] 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+$g2 [1] &quot;python&quot;
+$g3 [1] &quot;HTML&quot;
+
+5.Write a R program to create an ordered factor from data consisting of the
+names of months
+mons_v =
+c(&amp;quot;March&amp;quot;,&amp;quot;April&amp;quot;,&amp;quot;January&amp;quot;,&amp;quot;November&amp;quot;,
+&amp;quot;January&amp;quot;,
+&amp;quot;September&amp;quot;,&amp;quot;October&amp;quot;,&amp;quot;September&amp;quot;,&amp;quot;November&amp;
+quot;,&amp;quot;August&amp;quot;,&amp;quot;February&amp;quot;,
+&amp;quot;January&amp;quot;,&amp;quot;November&amp;quot;,&amp;quot;November&amp;quot;,&amp;quot;February&amp;qu
+ot;,&amp;quot;May&amp;quot;,&amp;quot;August&amp;quot;,&amp;quot;Februa
+r
+y&amp;quot;,&amp;quot;July&amp;quot;,&amp;quot;December&amp;quot;,&amp;quot;August&amp;quot;,&amp;quot;August&amp;q
+uot;,&amp;quot;September&amp;quot;,&amp;quot;November&amp;quot;,&amp;quot;Se
+p tember&amp;quot;,&amp;quot;February&amp;quot;,&amp;quot;April&amp;quot;)
+
+mons_v = c(&quot;March&quot;,&quot;April&quot;,&quot;January&quot;,&quot;November&quot;,&quot;January&quot;,
+&quot;September&quot;,&quot;October&quot;,&quot;September&quot;,&quot;November&quot;,&quot;August&quot;,&quot;February&quot;,
+&quot;January&quot;,&quot;November&quot;,&quot;November&quot;,&quot;February&quot;,&quot;May&quot;,&quot;August&quot;,&quot;February&quot;,
+&quot;July&quot;,&quot;December&quot;,&quot;August&quot;,&quot;August&quot;,&quot;September&quot;,&quot;November&quot;,&quot;September&quot;,
+&quot;February&quot;,&quot;April&quot;)
+print(&quot;Original vector:&quot;)
+print(mons_v) f = factor(mons_v)
+print(&quot;Ordered factors of the said vector:&quot;)
+print(f)
+print(table(f))
+Output:
+“March” &quot;May&quot; &quot;August&quot; &quot;February&quot; &quot;July&quot; &quot;December&quot;
+[21] &quot;August&quot; &quot;August&quot; &quot;September&quot; &quot;November&quot; &quot;September&quot;
+[26] &quot;February&quot; &quot;April&quot;
+[1] &quot;Original vector:&quot;
+[1] &quot;March&quot; &quot;April&quot; &quot;January&quot; &quot;November&quot; &quot;January&quot;
+[6] &quot;September&quot; &quot;October&quot; &quot;September&quot; &quot;November&quot; &quot;August&quot;
+[11] &quot;February&quot; &quot;January&quot; &quot;November&quot; &quot;November&quot; &quot;February&quot;
+[16]
+[1] &quot;Ordered factors of the said vector:&quot;
+[1] March April January November January September October
+[8] September November August February January November November
+[15] February May August February July December August
+[22] August September November September February April
+11 Levels: April August December February January July March ... September
+April August December February January July March
+2 4 1 4 3 1 1
+May November October September
+1 5 1 4
