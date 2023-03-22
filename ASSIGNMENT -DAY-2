@@ -1,0 +1,59 @@
+ITA04 STATISTICS WITH R PROGRAMMING 192111576
+
+Assignment-I DAY 2
+
+A) The built-in vector LETTERS contains the uppercase letters of the alphabet. Produce a vector of
+(i) the first 12 letters;
+A) LETTERS[1:12]
+(ii) the odd ‘numbered’ letters;
+for(i in 1:26){
+if(i %% 2 != 0){
+print(LETTERS[i])
+}
+}
+(iii) the (English) consonants.
+for( i in LETTERS){
+if(i==&#39;A&#39; || i==&#39;E&#39; || i==&#39;I&#39; || i==&#39;O&#39; || i==&#39;U&#39;){
+}
+else{
+print(i)
+}
+}
+A) The function rnorm() generates normal random variables. For instance, rnorm(10) gives a
+vectorof 10 i.i.d. standard normals. Generate 20 standard normals, and store them as x.
+Then obtain subvectors of
+a. the entries in x which are less than 1;
+b. the entries between – 0.5 and 1;
+c. the entries whose absolute value is larger than 1.5.
+data&lt;- rnorm(n = 10)
+print(data)
+summary(data)
+
+3) Solve the following system of simultaneous equations using matrix methods.
+a + 2b + 3c + 4d + 5e = −5 2a
++3b + 4c + 5d + e = 2
+
+3a + 4b + 5c + d + 2e = 5
+4a + 5b + c + 2d + 3e = 10
+5a + b + 2c + 3d + 4e = 11
+lm &lt;- matrix(c(1,2,3,4,5,2,3,4,5,1,3,4,5,1,2,4,5,1,2,3,5,1,2,3,4),nrow=5)
+rm &lt;- matrix(c(-5,2,5,10,11),nrow =5)
+solve(lm,rm)
+
+4) Create a factor object for an apple color such as &#39;green&#39;, &#39;green&#39;, &#39;yellow&#39;, &#39;red&#39;, &#39;red&#39;,
+&#39;red&#39;,&#39; green&#39;. Print the factor and applying the nlevels function to know the number of
+distinct values
+x &lt;- c(&#39;green&#39;, &#39;green&#39;, &#39;yellow&#39;, &#39;red&#39;, &#39;red&#39;, &#39;red&#39;,&#39;green&#39;)
+fac &lt;- factor(x)
+print(fac)
+print(nlevels(fac))
+5) Create an S3 object of class fruit contains a list with following required components
+such as name, quantity, cost and also Define and create s4 objects.Define a reference
+class of fruit
+setClass(&quot;ABOUT_FRUITS&quot;, fruits &lt;- list(name=&quot;character&quot;,
+Quantity=&quot;numeric&quot;,cost=&quot;numeric&quot;))
+fruit &lt;- new(&quot;ABOUT_FRUITS&quot;, name = &quot;banana&quot;, Quantity = 21, cost = 200)
+fruit
+
+fruits &lt;- list(name=&quot; apple&quot;,Quantity= 3,cost=100)
+class(fruits) &lt;- &quot;ABOUT_FRUITS&quot;
