@@ -1,0 +1,1871 @@
+SUBJECT CODE & NAME: ITA0448 Statistics with R Programming for Vectorized Expressions 
+Course Faculty: Mrs. Judy S 
+ASSESSMENT 3 
+1. How to use the cbind() and rbind() in data frame for the fields city and 
+zipcodedatas using vector and data frame. 
+Create a vectors: 
+# create a vector of cities and zipcodes 
+city <- c("delhi", "bangalore", "chennai", "mumbai") 
+zipcode <- c(123456, 789654, 698748, 456986) 
+# create a data frame with the above vectors 
+data1 <- data.frame(city, zipcode) 
+# print the data frame 
+cat("Original Data Frame:\n") 
+print(data1) 
+# create another vector with additional city and zipcodes 
+city2 <- c("punjab", "kerala") 
+zipcode2 <- c(456978, 569875) 
+# use cbind() function to add a new column to the data frame 
+data2 <- cbind(data1, city2, zipcode2) 
+# print the data frame after adding a new column using cbind() 
+cat("\nData Frame after adding new column using cbind():\n") 
+print(data2) 
+# use rbind() function to add a new row to the data frame 
+new_row <- c("punjab", 456978) 
+data3 <- rbind(data1, new row) 
+# print the data frame after adding a new row using rbind() 
+cat("\nData Frame after adding new row using rbind():\n") 
+print(data3) 
+cbind() function: 
+Output: 
+city 
+zipcode 
+[1] 
+delhi 
+123456 
+[2] 
+bangalore 
+789654 
+[3] 
+chennai 
+698748 
+[4] 
+mumbai 
+456986 
+rbind function: 
+Output: 
+city 
+zipcode 
+[1] 
+delhi 
+123456 
+[2] 
+bangalore 
+789654 
+[3] 
+chennai 
+698748 
+[4] 
+mumbai 
+456986 
+[5] 
+punjab 
+456978 
+[6] 
+kerala 
+569875 
+2. Create First Dataset with variables 
+surname 
+nationality 
+Create Second Dataset with variables 
+surname 
+movies 
+The common key variable is surname. How to merge both data and check if the dimensionality is 7x3. 
+# create first dataset 
+df1 <- data.frame(surname = c("Hitchcock", "Polanski", "Scorsese", "Spielberg"), 
+nationality = c("UK", "Poland", "US", "US")) 
+# create second dataset 
+df2 <- data.frame(surname = c("Hitchcock", "Polanski", "Spielberg", "Tarantino"), 
+movies = c("Psycho", "Chinatown", "Super 8", "Reservoir Dogs")) 
+# merge datasets 
+merged_df <- merge(df1, df2, by = "surname", all = TRUE) 
+# check dimensionality 
+dim(merged_df) = c(7, 3) 
+Output: 
+surname 
+nationality 
+title 
+1 Hitchcock 
+UK 
+Psycho 
+2 Hitchcock 
+UK 
+North by Northwest 
+3 Polanski 
+Poland 
+Chinatown 
+4 Scorsese 
+US 
+Taxi Driver 
+5 Spielberg 
+US 
+Super 8 
+6 Spielberg 
+US 
+7 Tarantino 
+US 
+Catch Me If You Can 
+Reservoir Dogs 
+3. Write a R program to create an empty data frame. 
+# Create empty data frame 
+empty_df <- data.frame(Ints = integer(), 
+Doubles = numeric(), 
+Characters = character(), 
+Logicals = logical(), 
+Factors = factor(levels = character())) 
+# Print the structure of the empty data frame 
+cat("Structure of the empty dataframe:\n") 
+str(empty_df) 
+Output: 
+[1] "Structure of the empty dataframe:" 'data.frame': O obs. of 5 variables: 
+$ Ints int 
+$ Doubles : num 
+$ Characters: chr 
+$ Logicals :logi 
+$ Factors: Factor w/ 0 levels: 
+NULL 
+4. Write a R program to create a data frame from four given vectors 
+name = c('Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas') 
+score = c(12.5, 9, 16.5, 12, 9, 20, 14.5, 13.5, 8, 19) 
+attempts = c(1, 3, 2, 3, 2, 3, 1, 1, 2, 1) 
+qualify = c('yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes') 
+PROGRAM 
+# Define the four vectors 
+name <- c('Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas') 
+score <- c(12.5, 9, 16.5, 12, 9, 20, 14.5, 13.5, 8, 19) 
+attempts <- c(1, 3, 2, 3, 2, 3, 1, 1, 2, 1) 
+qualify <- c('yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes') 
+# Create a data frame using the four vectors 
+df <- data.frame(name = name, score = score, attempts = attempts, qualify = qualify) 
+# Print the data frame 
+print(df) 
+OUTPUT 
+name score attempts qualify 
+1 Anastasia 12.5 
+1 
+yes 
+2 Dima 9.0 
+3 
+no 
+3 Katherine 16.5 
+2 
+yes 
+4 
+James 12.0 
+3 
+no 
+5 
+Emily 9.0 
+2 
+no 
+6 Michael 20.0 
+3 
+yes 
+7 Matthew 14.5 
+1 
+yes 
+8 
+Laura 13.5 
+1 
+no 
+9 Kevin 8.0 
+2 
+no 
+10 Jonas 19.0 
+1 
+yes 
+Output: 
+[1] "Original data frame:" 
+[1] "Anastasia" "Dima" 
+"Katherine" "James" "Emily" "Michael" 
+[7] "Matthew" "Laura" "Kevin" "Jonas" 
+[1] 12.5 9.0 16.5 12.0 9.0 20.0 14.5 13.5 8.0 19.0 
+[1] 1 3 2 3 2 3 1121 
+[1] "yes" "no" "yes" "no" "no" "yes" "yes" "no" "no" "yes" 
+name 
+score 
+1 
+Anastasia 
+12.5 
+234 
+2 
+Dima 
+9.0 
+3 
+Katherine 
+16.5 
+James 
+12.0 
+5 
+Emily 
+9.0 
+6 
+Michael 
+20.0 
+323 
+23 
+attempts qualify 
+1 
+yes 
+no 
+yes 
+no 
+no 
+yes 
+7 
+Matthew 
+14.5 
+1 
+yes 
+8 
+Laura 
+13.5 
+1 
+no 
+9 
+Kevin 
+8.0 
+2 
+10 
+Jonas 
+19.0 
+1 
+yes 
+no 
+5. Write a R program to extract specific column from a data frame using column 
+name. 
+PROGRAM 
+# Define the data frame 
+exam_data <- data.frame(name = c('Anastasia', 'Dima', 'Katherine', 'James', 
+'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'), 
+score = c(12.5, 9, 16.5, 12, 9, 20, 14.5, 13.5, 8, 19), 
+attempts = c(1, 3, 2, 3, 2, 3, 1, 1, 2, 1), 
+qualify = c('yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes')) 
+# Print the original data frame 
+cat("Original dataframe:\n") print(exam_data) 
+# Extract specific columns using column names 
+cat("Extract Specific columns:\n") 
+extracted_data <- exam_data[, c("name", "score")] print(extracted_data) 
+Output: 
+[1] "Original dataframe:" 
+name score attempts qualify 
+1 Anastasia 12.5 
+1 
+yes 
+2 Dima 9.0 
+3 
+no 
+3 Katherine 16.5 
+2 
+yes 
+4 
+James 12.0 
+3 
+no 
+5 
+Emily 9.0 
+2 
+no 
+6 Michael 20.0 
+3 
+yes 
+7 Matthew 14.5 
+1 
+yes 
+8 
+Laura 13.5 
+1 
+no 
+9 
+Kevin 8.0 
+2 
+no 
+10 Jonas 19.0 
+1 
+yes 
+[1] "Extract Specific columns:" 
+exam data.name exam data.score 
+1 
+Anastasia 
+12.5 
+2 
+Dima 
+9.0 
+3 
+Katherine 
+16.5 
+4 
+James 
+12.0 
+5 
+Emily 
+9.0 
+6 
+Michael 
+20.0 
+7 
+Matthew 
+14.5 
+8 
+Laura 
+13.5 
+9 
+Kevin 
+8.0 
+10 
+Jonas 
+19.0 
+6.__Write a R program to extract first two rows from a given data frame. 
+PROGRAM 
+# Create the original data frame 
+name = c('Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas') 
+score = c(12.5, 9, 16.5, 12, 9, 20, 14.5, 13.5, 8, 19) 
+attempts = c(1, 3, 2, 3, 2, 3, 1, 1, 2, 1) 
+qualify = c('yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes') 
+exam_data = data.frame(name, score, attempts, qualify) 
+# Print the original data frame 
+cat("Original dataframe:\n") print(exam_data) 
+# Extract first two rows cat("Extract first two rows:\n") exam_data[1:2, ] 
+Output: 
+[1] "Original dataframe:" 
+name score attempts qualify 
+1 Anastasia 12.5 
+1 
+yes 
+2 Dima 9.0 
+3 
+no 
+3 Katherine 16.5 
+2 
+yes 
+4 
+James 12.0 
+3 
+no 
+5 
+Emily 9.0 
+2 
+no 
+6 Michael 20.0 
+3 
+yes 
+7 Matthew 14.5 
+1 
+yes 
+8 
+Laura 13.5 
+1 
+no 
+9 Kevin 8.0 
+2 
+no 
+10 Jonas 19.0 
+1 
+yes 
+[1] "Extract first two rows:" 
+name score attempts qualify 
+1 Anastasia 12.5 1 
+yes 
+2 Dima 9.0 3 
+no 
+7. Write a R program to extract 3rd and 5th rows with 1st and 3rd columns from a 
+given data frame. 
+PROGRAM 
+my_df <- data.frame( 
+) 
+name = c("Anastasia", "Dima", "Katherine", "James", "Emily", "Michael", 
+"Matthew", "Laura", "Kevin", "Jonas"), 
+score = c(12.5, 9.0, 16.5, 12.0, 9.0, 20.0, 14.5, 13.5, 8.0, 19.0), 
+attempts = c(1, 3, 2, 3, 2, 3, 1, 1, 2, 1), 
+qualify = c("yes", "no", "yes", "no", "no", "yes", "yes", "no", "no", "yes"), stringsAsFactors = FALSE 
+# print the original data frame 
+cat("Original dataframe:\n") 
+print(my_df) 
+# extract 3rd and 5th rows with 1st and 3rd columns 
+extracted_df <- my_df[c(3, 5), c(1, 3)] 
+# print the extracted data frame 
+cat("\nExtract 3rd and 5th rows with 1st and 3rd columns:\n") print(extracted_df) 
+Output: 
+[1] "Original dataframe:" 
+name score attempts qualify 
+1 Anastasia 12.5 
+1 
+yes 
+2 Dima 9.0 
+3 
+no 
+3 Katherine 16.5 
+2 
+yes 
+4 James 12.0 
+3 
+no 
+5 
+Emily 9.0 
+2 
+no 
+6 Michael 20.0 
+3 
+yes 
+7 Matthew 14.5 
+1 
+yes 
+8 
+Laura 13.5 
+1 
+no 
+9 Kevin 8.0 
+2 
+no 
+10 Jonas 19.0 
+1 
+yes 
+[1] "Extract 3rd and 5th rows with 1st and 3rd columns :" 
+name attempts 
+3 Katherine 
+5 Emily 2 
+2 
+8. Write a R program to add a new column in a given data frame 
+PROGRAM 
+my_df <- data.frame( 
+) 
+name = c("Anastasia", "Dima", "Katherine", "James", "Emily", "Michael", "Matthew", "Laura", "Kevin", "Jonas"), 
+score = c(12.5, 9.0, 16.5, 12.0, 9.0, 20.0, 14.5, 13.5, 8.0, 19.0), 
+attempts = c(1, 3, 2, 3, 2, 3, 1, 1, 2, 1), 
+qualify = c("yes", "no", "yes", "no", "no", "yes", "yes", "no", "no", "yes"), stringsAsFactors = FALSE 
+# print the original data frame 
+cat("Original dataframe:\n") print(my_df) 
+# add a new column named "country" with the value "USA" my_df$country <- "USA" 
+# print the new data frame with the added column 
+cat("\nNew data frame after adding the 'country' column:\n") print(my_df) 
+Output: 
+[1] "Original dataframe:" 
+name score attempts qualify 
+1 Anastasia 12.5 1 
+yes 
+2 Dima 9.0 
+3 
+no 
+3 Katherine 16.5 
+2 
+yes 
+4 James 12.0 
+3 
+no 
+5 
+Emily 9.0 
+2 
+no 
+6 Michael 20.0 
+3 
+yes 
+7 Matthew 14.5 
+1 
+yes 
+8 
+Laura 13.5 
+1 
+no 
+9 
+Kevin 8.0 
+2 
+no 
+10 
+Jonas 19.0 
+1 
+yes 
+[1] "New data frame after adding the 'country' column:" 
+name score attempts qualify country 
+1 Anastasia 12.5 1 yes USA 
+2 
+Dima 9.0 3 
+no USA 
+3 Katherine 16.5 
+2 
+yes 
+USA 
+4 
+James 12.0 
+3 
+no 
+USA 
+5 
+Emily 9.0 
+2 
+no 
+USA 
+6 Michael 20.0 
+3 
+yes 
+USA 
+7 Matthew 14.5 
+1 
+yes USA 
+8 
+Laura 13.5 
+1 
+no 
+USA 
+9 Kevin 8.0 
+2 
+no 
+USA 
+USA 
+10 Jonas 19.0 1 yes 
+9. Write a R program to add new row(s) to an existing data frame. 
+# create a data frame 
+df <- data.frame( 
+name = c("Anastasia", "Dima", "Katherine", "James", "Emily", "Michael", "Matthew", "Laura", "Kevin", "Jonas"), 
+) 
+score = c(12.5, 9.0, 16.5, 12.0, 9.0, 20.0, 14.5, 13.5, 8.0, 19.0), 
+attempts = c(1, 3, 2, 3, 2, 3, 1, 1, 2, 1), 
+qualify = c("yes", "no", "yes", "no", "no", "yes", "yes", "no", "no", "yes") 
+# print the original data frame 
+cat("Original dataframe:\n") print(df) 
+# add new row(s) to the data frame new_rows <- data.frame( 
+> 
+name = c("Robert", "Sophia"), 
+score = c(10.5, 9.0), 
+attempts = c(1, 3), 
+qualify = c("yes", "no") 
+df <- rbind(df, new_rows) 
+# print the modified data frame 
+cat("\nAfter adding new row(s) to an existing data frame:\n") print(df) 
+Output: 
+[1] "Original dataframe:" 
+name score attempts qualify 
+1 Anastasia 12.5 1 yes 
+2 Dima 9.0 3 no 
+3 Katherine 16.5 
+2 yes 
+4 James 12.0 
+3 
+no 
+5 
+Emily 9.0 
+2 
+no 
+6 Michael 20.0 
+3 
+yes 
+7 Matthew 14.5 
+1 
+yes 
+8 
+Laura 13.5 
+1 
+no 
+9 
+Kevin 8.0 
+2 
+no 
+10 Jonas 19.0 
+1 
+yes 
+[1] "After adding new row(s) to an existing data frame:" 
+name score attempts qualify 
+1 Anastasia 12.5 1 
+yes 
+2 Dima 9.0 3 no 
+3 Katherine 16.5 
+2 
+yes 
+4 James 12.0 3 
+no 
+5 Emily 9.0 
+2 
+no 
+6 Michael 20.0 
+3 
+yes 
+7 Matthew 14.5 
+1 
+yes 
+8 Laura 13.5 
+1 
+no 
+9 
+Kevin 8.0 
+2 
+no 
+10 Jonas 19.0 
+1 
+yes 
+11 Robert 10.5 
+1 
+yes 
+12 Sophia 9.0 3 
+no 
+10. Write a R program to drop column(s) by name from a given data frame. 
+PROGRAM 
+# Create the data frame 
+name <- c('Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas') 
+score <- c(12.5, 9, 16.5, 12, 9, 20, 14.5, 13.5, 8, 19) 
+attempts <- c(1, 3, 2, 3, 2, 3, 1, 1, 2, 1) 
+qualify <- c('yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes') 
+exam_data <- data.frame(name, score, attempts, qualify) 
+# Print the original data frame cat("Original dataframe:\n") print(exam_data) 
+# Drop the score and qualify columns 
+exam_data <- exam_data[, !names(exam_data) %in% c("score", "qualify")] 
+# Print the modified data frame cat("\nModified dataframe:\n") print(exam_data) 
+Output: 
+[1] "Original dataframe:" 
+name score attempts qualify 
+1 Anastasia 12.5 1 
+yes 
+2 Dima 9.0 
+3 
+no 
+3 Katherine 16.5 
+2 
+yes 
+4 
+James 12.0 
+3 
+no 
+5 
+Emily 9.0 
+2 
+no 
+6 Michael 20.0 
+3 
+yes 
+7 Matthew 14.5 
+1 
+yes 
+8 
+Laura 13.5 
+1 
+no 
+9 Kevin 8.0 
+2 
+no 
+10 Jonas 19.0 
+1 
+yes 
+score attempts 
+1 12.5 
+1 
+2 9.0 
+3 
+3 16.5 
+2 
+4 12.0 
+3 
+5 9.0 
+2 
+6 20.0 
+3 
+7 
+14.5 
+1 
+8 
+13.5 
+1 
+9 8.0 
+2 
+10 19.0 
+1 
+11. Write a R program to drop row(s) by number from a given data frame. 
+PROGRAM 
+# create a sample data frame 
+exam_data <- data.frame( 
+) 
+― 
+name = c("Anastasia", "Dima", "Katherine", "James", "Emily", "Michael", "Matthew", "Laura", "Kevin", "Jonas"), 
+score = c(12.5, 9.0, 16.5, 12.0, 9.0, 20.0, 14.5, 13.5, 8.0, 19.0), 
+attempts = c(1, 3, 2, 3, 2, 3, 1, 1, 2, 1), 
+qualify = c("yes", "no", "yes", "no", "no", "yes", "yes", "no", "no", "yes") 
+# print original dataframe 
+cat("[1] \"Original dataframe:\"\n") print(exam_data) 
+# drop row 2 and 4 
+exam_data <- exam_data[-c(2,4),] 
+# print modified dataframe 
+cat("\n[1] \"Drop row(s) by number:\"\n") print(exam_data) 
+Output: 
+[1] "Original dataframe:" 
+name score attempts qualify 
+1 Anastasia 12.5 
+1 
+yes 
+2 Dima 9.0 
+3 
+no 
+3 Katherine 16.5 
+2 
+yes 
+4 
+James 12.0 
+3 
+no 
+5 
+Emily 9.0 
+2 
+no 
+6 Michael 20.0 
+3 
+yes 
+7 Matthew 14.5 
+1 
+yes 
+8 
+Laura 13.5 
+1 
+no 
+9 
+Kevin 8.0 2 
+no 
+10 Jonas 19.0 
+1 
+yes 
+name score attempts qualify 
+1 Anastasia 12.5 
+1 
+yes 
+3 Katherine 16.5 
+2 
+yes 
+5 
+Emily 9.0 
+2 
+no 
+7 Matthew 14.5 
+1 
+yes 
+8 
+Laura 13.5 
+1 
+no 
+9 
+Kevin 8.0 
+2 
+no 
+10 Jonas 19.0 
+1 
+yes 
+12. Write a R program to sort a given data frame by multiple column(s). 
+# Create a sample data frame 
+df <- data.frame( 
+) 
+name = c("Anastasia", "Dima", "Katherine", "James", "Emily", "Michael", "Matthew", "Laura", "Kevin", "Jonas"), 
+score = c(12.5, 9.0, 16.5, 12.0, 9.0, 20.0, 14.5, 13.5, 8.0, 19.0), 
+attempts 
+= 
+c(1, 3, 2, 3, 2, 3, 1, 1, 2, 1), 
+qualify = c("yes", "no", "yes", "no", "no", "yes", "yes", "no", "no", "yes") 
+# Print the original data frame 
+cat("Original dataframe:\n") 
+print(df) 
+# Sort the data frame by 'name' and 'score' columns 
+df_sorted <- df[order(df$name, df$score), ] 
+# Print the sorted data frame 
+cat("dataframe after sorting 'name' and 'score' columns:\n") print(df_sorted) 
+Output: 
+[1] "Original dataframe:" 
+name score attempts qualify 
+1 Anastasia 12.5 1 yes 
+2 Dima 9.0 
+3 
+no 
+3 Katherine 16.5 
+2 
+yes 
+4 James 12.0 
+3 
+no 
+5 
+Emily 9.0 
+2 
+no 
+6 Michael 20.0 
+3 
+yes 
+7 Matthew 14.5 
+1 
+yes 
+8 
+Laura 13.5 
+1 
+no 
+9 Kevin 8.0 
+2 
+no 
+10 
+Jonas 19.0 
+1 
+yes 
+[1] "dataframe after sorting 'name' and 'score' columns:" 
+name score attempts qualify 
+1 Anastasia 12.5 1 
+yes 
+2 Dima 9.0 3 
+no 
+5 
+Emily 9.0 
+2 
+no 
+4 
+James 12.0 
+3 
+no 
+10 Jonas 19.0 
+1 
+yes 
+3 Katherine 16.5 
+2 
+yes 
+9 
+Kevin 8.0 
+2 
+no 
+8 
+Laura 13.5 
+1 
+no 
+7 Matthew 14.5 
+1 
+yes 
+6 
+Michael 20.0 
+3 
+yes 
+13. Write a R program to create inner, outer, left, right join(merge) from given two 
+data frames. 
+# Create two data frames 
+dfl <- data.frame(numid = c(10, 11, 12, 14), value = c("A", "B", "C", "D")) 
+df2 <- data.frame(numid = c(11, 12, 13, 15), value = c("E", "F", "G", "H")) 
+# Left outer join 
+left_join <- merge(df1, df2, by = "numid", all.x = TRUE) cat("[1] \"Left outer Join:\n\"", left_join$numid, "\n\n") 
+# Right outer join 
+right_join <- merge(df1, df2, by = "numid", all.y = TRUE) cat("[1] \"Right outer Join:\n\"", right_join$numid, "\n\n") 
+# Outer join 
+outer_join <- merge(df1, df2, by = "numid", all = TRUE) cat("[1] \"Outer Join:\n\"", outer_join$numid, "\n\n") 
+# Cross join 
+cross_join <- merge(df1, df2, by = NULL) 
+cat("[1] \"Cross Join:\n\"", cross_join$numid.x, cross_join$numid.y, "\n") 
+Output: 
+[1] "Left outer Join:" numid 
+1 
+10 
+2 11 
+3 12 
+4 14 
+[1] "Right outer Join:" 
+numid 
+1 
+11 
+2 12 
+3 13 
+4 15 
+[1] "Outer Join:" 
+numid 
+1 
+10 
+2 
+11 
+3 12 
+4 
+13 
+5 14 
+6 15 
+[1] "Cross Join:" 
+numid.xnumid.y 
+1 
+12 13 
+2 
+14 
+13 
+3 
+10 
+13 
+4 
+11 
+13 
+5 
+12 
+15 
+6 
+14 
+15 
+7 
+10 
+15 
+8 
+11 
+15 
+9 
+12 
+11 
+10 
+14 
+11 
+11 
+10 
+11 
+12 
+11 
+11 
+13 
+12 
+12 
+14 14 
+12 
+15 
+10 
+12 
+16 
+11 
+12 
+14. Write a R program to replace NA values with 3 in a given data frame. 
+# create a sample data frame 
+df <- data.frame( 
+) 
+name = c("Anastasia", "Dima", "Katherine", "James", "Emily", "Michael", "Matthew", "Laura", "Kevin", "Jonas"), 
+score = c(12.5, 9.0, 16.5, 12.0, 9.0, 20.0, 14.5, 13.5, 8.0, 19.0), 
+attempts = c(1, 3, 2, NA, 2, NA, 1, NA, 2, 1), 
+qualify = c("yes", "no", "yes", "no", "no", "yes", "yes", "no", "no", "yes") 
+# print original data frame 
+cat("Original dataframe:\n") print(df) 
+# replace NA values with 3 
+df[is.na(df)] <- 3 
+# print modified data frame 
+cat("\nAfter removing NA with 3, the said dataframe becomes:\n") 
+print(df) 
+Output: 
+[1] "Original dataframe:" 
+name score attempts qualify 
+1 Anastasia 12.5 
+1 
+yes 
+2 Dima 9.0 
+NA 
+no 
+3 Katherine 16.5 
+2 
+yes 
+4 
+James 12.0 
+NA 
+no 
+5 
+Emily 9.0 
+2 
+no 
+6 Michael 20.0 
+NA 
+yes 
+7 Matthew 14.5 
+1 
+yes 
+8 
+Laura 13.5 
+NA 
+no 
+9 Kevin 8.0 
+2 
+no 
+10 Jonas 19.0 
+1 
+yes 
+[1] "After removing NA with 3, the said dataframe becomes:" 
+name score attempts qualify 
+1 Anastasia 12.5 
+1 
+yes 
+2 Dima 9.0 
+3 
+no 
+3 Katherine 16.5 
+2 
+yes 
+4 James 12.0 
+3 
+no 
+5 
+Emily 9.0 
+2 
+no 
+6 Michael 20.0 
+3 
+yes 
+7 Matthew 14.5 
+1 
+yes 
+8 
+Laura 13.5 
+3 
+no 
+9 
+Kevin 8.0 
+2 
+no 
+10 Jonas 19.0 
+1 
+yes 
+15. Write a R program to change a column name of a given data frame. 
+# Create the original data frame 
+df <- data.frame( 
+) 
+name = c("Anastasia", "Dima", "Katherine", "James", "Emily", "Michael", "Matthew", "Laura", "Kevin", "Jonas"), 
+score = c(12.5, 9.0, 16.5, 12.0, 9.0, 20.0, 14.5, 13.5, 8.0, 19.0), 
+attempts = c(1, 3, 2, NA, 2, NA, 1, NA, 2, 1), 
+qualify = c("yes", "no", "yes", "no", "no", "yes", "yes", "no", "no", "yes") 
+# Print the original data frame 
+cat("Original dataframe:\n") print(df) 
+# Change the column names 
+names(df)[1:2] <- c("student_name", "avg_score") 
+# Print the modified data frame 
+cat("Change more than one column name of the said dataframe:\n") print(df) 
+Output: 
+[1] "Original dataframe:" 
+name score attempts qualify 
+1 Anastasia 12.5 1 yes 
+2 
+Dima 9.0 
+NA 
+no 
+3 Katherine 16.5 
+2 
+yes 
+4 
+James 12.0 
+NA 
+no 
+5 
+Emily 9.0 
+2 
+no 
+6 Michael 20.0 
+NA 
+yes 
+7 Matthew 14.5 
+1 
+yes 
+8 
+Laura 13.5 
+NA 
+no 
+9 
+Kevin 8.0 2 
+no 
+10 Jonas 19.0 
+1 
+yes 
+[1] "Change column-name 'name' to 'student_name' of the said dataframe:" student_name score attempts qualify 
+Anastasia 12.5 1 yes 
+1 
+2 
+Dima 9.0 
+NA 
+no 
+3 
+Katherine 16.5 
+2 
+yes 
+4 
+James 12.0 
+NA 
+no 
+5 
+Emily 9.0 
+2 
+no 
+6 
+Michael 20.0 
+NA 
+yes 
+7 
+Matthew 14.5 
+1 
+yes 
+8 
+Laura 13.5 
+NA 
+no 
+9 
+Kevin 8.0 
+2 
+no 
+10 
+Jonas 19.0 
+1 
+yes 
+16. Write a R program to change more than one column name of a given data 
+frame. 
+1 
+# Create the original data frame 
+df <- data.frame( 
+) 
+name = c("Anastasia", "Dima", "Katherine", "James", "Emily", "Michael", "Matthew", "Laura", "Kevin", "Jonas"), 
+score = c(12.5, 9.0, 16.5, 12.0, 9.0, 20.0, 14.5, 13.5, 8.0, 19.0), 
+attempts = c(1, 3, 2, NA, 2, NA, 1, NA, 2, 1), 
+qualify = c("yes", "no", "yes", "no", "no", "yes", "yes", "no", "no", "yes") 
+# Print the original data frame 
+cat("Original dataframe:\n") print(df) 
+# Change the column names 
+names(df)[1:2] <- c("student_name", "avg_score") 
+# Print the modified data frame 
+cat("Change more than one column name of the said dataframe:\n") print(df) 
+Output: 
+[1] "Original dataframe:" 
+name score attempts qualify 
+1 Anastasia 12.5 
+1 
+yes 
+2 Dima 9.0 
+NA 
+no 
+3 Katherine 16.5 
+2 
+yes 
+4 
+James 12.0 
+NA 
+no 
+5 
+Emily 9.0 
+2 
+no 
+6 Michael 20.0 
+NA 
+yes 
+7 Matthew 14.5 
+1 
+yes 
+8 
+Laura 13.5 
+NA 
+no 
+9 Kevin 8.0 2 
+no 
+yes 
+10 Jonas 19.0 1 
+[1] "Change more than one column name of the said dataframe:" student_nameavg_score attempts qualify 
+1 
+Anastasia 12.5 
+1 yes 
+2 
+Dima 9.0 NA no 
+3 
+Katherine 
+16.5 
+2 
+yes 
+4 
+James 
+12.0 
+NA 
+no 
+5 
+Emily 
+9.0 
+2 no 
+6 
+Michael 20.0 NA 
+yes 
+7 
+Matthew 
+14.5 
+1 
+yes 
+8 
+Laura 13.5 NA 
+no 
+9 
+Kevin 8.0 2 
+no 
+10 
+Jonas 19.0 1 
+yes 
+17. Write a R program to select some random rows from a given data frame. 
+Output: 
+[1] "Original dataframe:" 
+name score attempts qualify 
+1 Anastasia 12.5 
+1 
+yes 
+2 Dima 9.0 
+3 
+no 
+3 Katherine 16.5 
+2 
+yes 
+4 
+James 12.0 
+3 
+no 
+5 
+Emily 9.0 
+2 
+no 
+6 Michael 20.0 
+3 
+yes 
+7 Matthew 14.5 
+1 
+yes 
+8 
+Laura 13.5 
+1 
+no 
+9 
+Kevin 8.0 
+2 
+no 
+10 
+Jonas 19.0 
+1 
+yes 
+[1] "Select three random rows of the said dataframe:" 
+name score attempts qualify 
+10 Jonas 19.0 
+1 yes 
+7 Matthew 14.5 
+1 
+yes 
+4 James 12.0 
+3 
+no 
+18. Write a R program to reorder an given data frame by column name. 
+# create the original data frame 
+df <- data.frame( 
+) 
+name = c("Anastasia", "Dima", "Katherine", "James", "Emily", "Michael", "Matthew", "Laura", "Kevin", 
+"Kevin", "Jonas"), 
+score = c(12.5, 9.0, 16.5, 12.0, 9.0, 20.0, 14.5, 13.5, 8.0, 19.0), 
+attempts = c(1, 3, 2, 3, 2, 3, 1, 1, 2, 1), 
+qualify = c("yes", "no", "yes", "no", "no", "yes", "yes", "no", "no", "yes") 
+# print the original data frame 
+cat("Original dataframe:\n") 
+print(df) 
+# reorder the data frame by column name 
+cat("Reorder by column name:\n") 
+df_reordered <- df[, c("name", "attempts", "score", "qualify")] print(df_reordered) 
+Output: 
+[1] "Original dataframe:" 
+name score attempts qualify 
+1 Anastasia 12.5 
+1 
+yes 
+2 Dima 9.0 
+3 
+no 
+3 Katherine 16.5 
+2 
+yes 
+4 James 12.0 
+3 
+no 
+5 
+Emily 9.0 
+2 
+no 
+6 Michael 20.0 
+3 
+yes 
+7 Matthew 14.5 
+1 
+yes 
+8 Laura 13.5 
+1 
+no 
+9 Kevin 8.0 
+2 
+no 
+10 
+Jonas 19.0 
+1 
+yes 
+[1] "Reorder by column name:" 
+name attempts score qualify 
+1 Anastasia 1 12.5 yes 
+2 Dima 
+3 9.0 
+no 
+3 Katherine 
+4 
+James 
+2 16.5 
+3 12.0 
+yes 
+no 
+5 
+Emily 
+2 9.0 
+no 
+6 Michael 
+3 20.0 
+yes 
+7 Matthew 
+1 14.5 
+yes 
+8 
+Laura 
+1 13.5 
+no 
+9 Kevin 
+2 8.0 no 
+10 Jonas 
+1 19.0 yes 
+19. Write a R program to compare two data frames to find the elements in first data frame 
+that are not present in second data frame. 
+Output: 
+[1] "Original Dataframes" 
+[1] "a" "b" "c" "d" "e" 
+[1] "d" "e" "f" "g" 
+[1] "Data in first dataframe that are not present in second dataframe:" 
+[1] "a" "b" "c" 
+20. Write a R program to find elements which are present in two given data frames. 
+# Create two data frames 
+dfl <- data.frame(a = 1:5, b = 6:10, c = 11:15, d = 16:20, e = 21:25) 
+df2 <- data.frame(d = 26:27, e = 28:29, f= 30:31, g = 32:33) 
+# Print the original data frames 
+cat("Original Dataframes\n") 
+print(df1) 
+print(df2) 
+# Find elements present in both data frames 
+common_elements <- intersect(names(df1), names(df2)) 
+# Print the common elements 
+cat("Elements which are present in both dataframe:\n") print(common_elements) 
+Output: 
+[1] "Original Dataframes" 
+[1] "a" "b" "c" "d" "e" 
+[1] "d" "e" "f" "g" 
+[1] "Elements which are present in both dataframe:" 
+[1] "d" "e" 
+21. Write a R program to find elements come only once that are common to both 
+given data frames. 
+# Create a sample data frame 
+df <- data.frame( 
+} 
+name = c("Anastasia", "Dima", "Katherine", "James", "Emily", "Michael", "Matthew", "Laura", "Kevin", "Jonas"), 
+score = c(12.5, 9.0, 16.5, 12.0, 9.0, 20.0, 14.5, 13.5, 8.0, 19.0), 
+attempts = c(1, 3, 2, 3, 2, 3, 1, 1, 2, 1), 
+qualify = c("yes", "no", "yes", "no", "no", "yes", "yes", "no", "no", "yes") 
+# Save the data frame in a file called "data.rda" 
+save(df, file = "data.rda") 
+Output: 
+[1] "Original Dataframes" 
+[1] "a" "b" "c" "d" "e" 
+[1] "d" "e" "f" "g" 
+[1] "Find elements come only once that are common to both given dataframes:" [1] "a" "b" "c" "d" "e" "f" "g" 
+22. Write a R program to save the information of a data frame in a file and display 
+the information of the file. 
+# Create a sample data frame 
+df <- data.frame( 
+) 
+name = c("Anastasia", "Dima", "Katherine", "James", "Emily", "Michael", "Matthew", "Laura", "Kevin", "Jonas"), 
+score = c(12.5, 9.0, 16.5, 12.0, 9.0, 20.0, 14.5, 13.5, 8.0, 19.0), 
+attempts = c(1, 3, 2, 3, 2, 3, 1, 1, 2, 1), 
+qualify = c("yes", "no", "yes", "no", "no", "yes", "yes", "no", "no", "yes") 
+# Save the data frame in a file called "data.rda" 
+save(df, file = "data.rda") 
+Output: 
+[1] "Original dataframe:" 
+name score attempts qualify 
+1 Anastasia 12.5 
+1 
+yes 
+2 Dima 9.0 
+3 
+no 
+3 Katherine 16.5 
+2 
+yes 
+4 
+James 12.0 
+3 
+no 
+5 
+Emily 9.0 
+2 
+no 
+6 Michael 20.0 
+3 
+yes 
+7 Matthew 14.5 
+1 
+yes 
+8 
+Laura 13.5 
+1 
+no 
+9 
+Kevin 8.0 
+2 
+no 
+10 Jonas 19.0 
+1 
+yes 
+size isdir mode 
+mtimectime 
+data.rda 344 FALSE 644 2018-10-25 12:06:09 2018-10-25 12:06:09 
+atimeuidgidunamegrname 
+data.rda 2018-10-25 12:06:09 1000 1000 trinket trinket 
+23. Write a R program to count the number of NA values in a data frame column. 
+Output: 
+[1] "Original dataframe:" 
+name score attempts qualify 
+1 Anastasia 12.5 1 yes 
+2 Dima 9.0 NA 
+no 
+3 Katherine 16.5 
+2 
+yes 
+4 James 12.0 
+NA 
+no 
+5 Emily 9.0 2 no 
+6 Michael 20.0 
+NA 
+yes 
+7 Matthew 14.5 
+1 
+yes 
+8 
+Laura 13.5 
+NA 
+no 
+9 Kevin 8.0 
+2 
+no 
+10 
+Jonas 19.0 
+1 yes 
+[1] "The number of NA values in attempts column:" 
+[1] 4 
+24. Write a R program to create a data frame using two given vectors and display 
+the duplicated elements and unique rows of the said data frame. 
+# create two vectors 
+a <- c(10, 20, 10, 10, 40, 50, 20, 30) 
+b <- c(10, 30, 10, 20, 0, 50, 30, 30) 
+# create data frame using the vectors 
+df <- data.frame(a = a, b = b) 
+# display original data frame 
+cat("Original data frame:\n") print(df) 
+# display duplicated elements 
+cat("Duplicate elements of the said data frame:\n") print(duplicated(df)) 
+# display unique rows 
+cat("Unique rows of the said data frame:\n") 
+print(unique(df) 
+Output: 
+[1] "Original data frame:" 
+a b 
+1 10 10 
+2 20 30 
+3 10 10 
+4 10 20 
+5 40 0 
+6 50 50 
+7 20 30 
+8 30 30 
+[1] "Duplicate elements of the said data frame:" 
+[1] FALSE FALSE TRUE FALSE FALSEFALSE TRUE FALSE [1] "Unique rows of the said data frame:" 
+a b 
+1 10 10 
+2 20 30 
+4 10 20 
+5 40 0 
+6 50 50 
+8 30 30 
+25. Write a R program to call the (built-in) dataset airquality. Check whether it is a 
+data frame or not? Order the entire data frame by the first and second column. 
+# call the airquality dataset data(airquality) 
+# print original dataset information cat("Original data:", airquality$descr[1], "\n") 
+# check if it is a data frame 
+cat(class(airquality), "\n") 
+# order the entire data frame by the first and second column ordered_df <- airquality[order(airquality$Ozone, airquality$Solar.R), ] 
+# print ordered data frame 
+cat("\nOrder the entire data frame by the first and second column:\n") print(ordered_df) 
+Output: 
+[1] "Original data: Daily air quality measurements in New York, May to September 1973." 
+[1] "data.frame" 
+Ozone Solar.R Wind Temp Month Day 
+1 41 190 7.4 67 
+5 1 
+2 
+36 
+118 8.0 72 
+5 2 
+3 
+12 
+149 12.6 74 
+5 3 
+4 
+18 
+313 11.5 62 
+5 4 
+5 NA 
+NA 14.3 56 
+55 
+6 
+28 
+NA 14.9 66 
+5 6 
+7 
+23 
+299 8.6 65 
+5 7 
+8 
+19 
+99 13.8 59 
+5 8 
+9 8 
+19 20.1 61 
+59 
+10 NA 
+194 8.6 69 5 10 
+[1] "Order the entire data frame by the first and second column:" 
+Ozone Solar.R Wind Temp Month Day 
+21 1 
+8 9.7 59 
+5 21 
+23 4 
+18 6 
+25 9.7 61 78 18.4 57 
+5 23 
+5 18 
+119 NA 
+153 5.7 88 
+8 27 
+150 NA 145 13.2 77 9 27 
+26. Write a R program to call the (built-in) dataset airquality. Remove the variables 
+'Solar.R' and 'Wind' and display the data frame. 
+data(airquality) 
+# Display original data 
+cat("Original data: Daily air quality measurements in New York, May to September 1973.\n") head(airquality) 
+# Remove 'Solar.R' and 'Wind' variables 
+airquality_new <- airquality[, c("Ozone", "Temp", "Month", "Day")] 
+# Display data frame after removing variables 
+cat("\ndata.frame after removing 'Solar.R' and 'Wind' variables:\n") head(airquality_new) 
+Output: 
+[1] "Original data: Daily air quality measurements in New York, May to September 1973." 
+Ozone Solar.R Wind Temp Month Day 
+1 
+41 190 7.4 67 
+5 1 
+2 
+36 
+118 8.0 72 
+5 2 
+3 
+12 
+149 12.6 74 
+5 3 
+4 
+18 
+313 11.5 62 
+5 4 
+5 
+ΝΑ 
+NA 14.3 
+56 
+55 
+152 18 
+131 8.0 76 
+9 29 
+153 20 223 11.5 68 9 30 
+[1] "data.frame after removing 'Solar.R' and 'Wind' variables:" 
+12345 
+Ozone Temp Month Day 
+41 
+67 
+36 72 
+12 74 
+18 62 
+ΝΑ 56 
+18 76 
+152 
+153 
+20 68 
+LO LO LO LO LO 
+12345 
+5 
+5 
+5 
+5 
+5 5 
+29 
+30 
+6 9 
+9 
+9 
+23 
+27. Find the difference between Data Frames and other Data Structures with 
+example. 
+Solution: 
+Data Structure: 
+There is also an array data structure that extends this idea to more than two dimensions. A collection of vectors that all have the same length. This is like a matrix, except that each column can contain a different data type. 
+Eg:Array, Linked Lists, Stack, Queues, Trees, Graphs, Sets, Hash Tables. 
+Data Frame: 
+A data frame can be used to represent an entire data set. A data frame is a table or a two-dimensional array-like structure in which each column contains values of one variable and each row contains one set of values from each column. 
+Eg: Matrices 
+28. How to create the data frame and print it for the employee data set. 
+Emp_id = 1:5 
+Emp_name = "Ricky","Danish","Mini","Ryan","Gary" Salary = 643.3,515.2,671.0,729.0,943.25 
+: 
+Start_date = "2022-01-01", "2021-09-23", "2020-11-15", "2021-05-11","2022-03-27" 
+29. Write the code to get the Structure of the R Data Frame. 
+# Create a data frame 
+df <- data.frame( 
+) 
+name = c("John", "Mary", "Bob"), 
+age = c(25, 30, 40), 
+is_student = c(TRUE, FALSE, FALSE) 
+# Get the structure of the data frame 
+str(df) 
+30. How to extract data from data frame for the above employee dataset. 
+# create employee data frame 
+emp.data <- data.frame( 
+emp_name = c("Ricky", "Danish", "Mini", "Ryan", "Gary"), salary = c(643.3, 515.2, 671, 729, 943.25), 
+# extract data from data frame 
+emp <- emp.data[c("emp_name", "salary")] 
+# print extracted data 
+cat("Expected output:\n") print(emp) 
+Expected Output: 
+emp.data.emp_name. emp.data.salary 
+1 
+Ricky 
+643.30 
+2 
+Danish 
+515.20 
+3 
+Mini 
+671.00 
+4 
+Ryan 
+729.00 
+5 
+Gary 
+943.25 
+31. How to extract the first two rows and then all columns in employee data frame. 
+# create the employee data frame 
+emp.data <- data.frame( 
+} 
+emp_name = c("Ricky", "Danish", "Mini", "Ryan", "Gary"), 
+salary = c(643.3, 515.2, 671, 729, 943.25), 
+# extract first two rows and all columns 
+emp.data[1:2,] 
+Expected Output: 
+emp idemp name 
+1 
+2 
+Ricky 
+Danish 
+salary 643.3 
+start date 
+2012-01-01 
+515.2 
+2013-09-23 
+32. Write a code to extract 3rd and 5th row with 2nd and 4th column of the employee 
+data. 
+emp_id <- c(1, 2, 3, 4, 5) 
+emp_name <- c("Ricky", "Danish", "Mini", "Ryan", "Gary") 
+salary <- c(643.3, 515.2, 671, 729, 943.25) 
+start_date <- as.Date(c("2012-01-01", "2013-09-23", "2014-11-15", "2014-05-11", "2015-03-27")) 
+emp_data <- data.frame(emp_id, emp_name, salary, start_date) 
+# Extracting the 3rd and 5th rows with the 2nd and 4th columns 
+emp_subset <- emp_data[c(3, 5), c(2, 4)] 
+# Displaying the output 
+emp_subset 
+Expected Output: 
+emp namestart date 
+3 
+Mini Gary 
+2014-11-15 
+2015-03-27 
+Data Reshaping: 
+Data reshaping means changing how data is represented in rows and column. It includes splitting, merging or interchanging the rows and columns. 
+Reshaping functions: 
+• cbind() 
+• rbind() 
+• mergr() 
+33. How to expand the data frame by adding rows and columns in data frame for 
+employee data set. 
+Add Column: dept<- c("IT", "Operations", "IT", "HR", "Finance") 
+# create the employee data frame 
+emp.data <- data.frame( 
+emp_name 
+= 
+c("Ricky", "Danish", "Mini", "Ryan", "Gary"), 
+salary = c(643.3, 515.2, 671, 729, 943.25), 
+= 
+age c(24, 25, 28, 30, 35), 
+} 
+sex 
+= 
+c("M", "M", "F", "M", "M"), 
+dept 
+= 
+c("IT", "IT", "HR", "HR", "IT") 
+# extract first two rows and all columns 
+emp.data[1:5] 
+Expected Output: 
+emp_idemp_name 
+salary 
+start date dept 
+1 
+Ricky 
+643.30 
+2012-01-01 
+IT 
+2 
+Danish 
+515.20 
+2013-09-23 
+Operations 
+3 
+Mini 
+671.00 
+2014-11-15 
+4 
+Ryan 
+729.00 
+2014-05-11 
+HR 
+5 
+Gary 
+943.25 
+2015-03-27 
+Finance 
+Add Row using the second dataframe given below: 
+- 
+emp_id 6:8, 
+= 
+emp name "Rasmi", "Pranab", "Tusar", 
+salary 578.0,722.5,632.8, 
+start date = 
+"2022-05-21","2020-07-30","2019-06-17", 
+dept = "IT", "Operations","Fianance", 
+dept <- c("IT", "Operations", "IT", "HR", "Finance") 
+emp.data$dept <- dept 
+new_emp_data <- 
+= 
+emp_id 6:8, 
+= 
+data.frame( 
+emp_name c("Rasmi", "Pranab", "Tusar"), 
+salary 
+= 
+c(578.0, 722.5, 632.8), 
+} 
+start date 
+= 
+c("2022-05-21", "2020-07-30", "2019-06-17"), 
+dept = c("IT", "Operations", "Finance") 
+emp.data <- rbind(emp.data, new_emp_data) 
+Expected Output: 
+emp idemp name 
+1 
+234567∞ 
+8 
+Ricky Danish 
+Mini 
+salary 
+643.30 515.20 671.00 729.00 943.25 
+start date 
+dept 
+IT 
+Operations 
+IT 
+THE 
+Ryan Gary Rasmi 
+578.00 
+Pranab 
+722.50 
+Tusar 
+632.80 
+HR 
+2012-01-01 
+2013-09-23 
+2014-11-15 
+2014-05-11 
+2015-03-27 
+2013-05-21 
+2013-07-30 
+2014-06-17 
+Operations 
+Finance 
+IT 
+Fianance 
+34. Write a R program to compare two data frames to find the row(s) in first data frame that are not present in second data frame. 
+# create sample data frames 
+) 
+df1 <- data.frame( 
+id = c(1, 2, 3, 4, 5), 
+name = c("John", "Jane", "Alice", "Bob", "Mary") 
+df2 <- data.frame( 
+} 
+id = c(2, 3, 5), 
+name = c("Jane", "Alice", "Mary") 
+# identify rows in df1 that are not in df2 
+df1_not_in_df2 <- anti_join(df1, df2, by = c("id", "name")) 
+# print results 
+cat("Rows in df1 that are not in df2:\n") 
+print(df1_not_in_df2) 
+35. Write a R program to find elements come only once that are common to both given data frames. 
+# Create sample data frames 
+df1 <- data.frame(a = c(1, 2, 3, 4, 5), b = c("a", "b", "c", "d", "e")) 
+df2 <- data.frame(a = c(3, 4, 5, 6, 7), b = c("c", "d", "e", "f", "g")) 
+# Find elements that appear only once and are common to both data frames 
+common_elements <- intersect(df1, df2) 
+unique_elements <- setdiff(intersect(df1, df2), union(df1, df2)) 
+# Print the results 
+cat("Common elements:\n") 
+print(common_elements) 
+cat("\nUnique elements appearing only once in both data frames:\n") 
+print(unique_elements) 
+36. Write a R program to create a data frame using two given vectors and display the duplicated elements and unique rows of the said data frame. 
+# Create two given vectors 
+vector1 <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) 
+vector2 <- c(5, 6, 7, 8, 9, 10, 11, 12, 13, 14) 
+# Combine the two vectors into a data frame 
+df <- data.frame(vector1, vector2) 
+# Display the duplicated elements dupes <- df[duplicated(df),] print("Duplicated Elements:") print(dupes) 
+# Display the unique rows unique_rows <- unique(df) print("Unique Rows:") print(unique_rows) 
+Practice Probs 
+File Read and Write Functions in R 
+Readline() 
+con <- file("Sample.txt", "r") 
+w<-readLines(con) 
+close(con) 
+w[1] 
+w[2] 
+w[3] 
+writeline 
+sample<-c("Class,Alcohol,Malic acid,Ash","1,14.23,1.71,2.43","1,13.2,1.78,2.14") 
+writeLines(sample, "sample.csv") 
+dput and dget(): 
+# Create a data frame 
+x <- data.frame(Name = "Mr. A", Gender = "Male", Age=35) 
+#Print 'dput' output to your R console 
+dput(x) 
+#Write the 'dput' output to a file 
+dput(x, file = "w.R") 
+# Now read in 'dput' output from the file 
+y <- dget("w.R") 
+y 
+dump 
+x<-1:10 
+d <- data.frame(Name = "Mr. A", Gender = "Male", Age=35) dump(c("x", "d"), file = "dump_data.R") 
+rm(x, d) #After dumping just remove the variables from environment. 
+source("dump_data.R") 
+X 
+d 
+str(d) 
+read & Write 
+> data <- read.csv("employee_data.csv", header = TRUE, sep=",") 
+> is.data.frame(data) 
+[1] TRUE 
+> ncol(data) 
+[1] 9 
+> nrow(data) 
+[1] 1000 
+> sal <- max(data$salary) 
+> sal 
+[1] 106905 
+>retval <-subset(data, gender=="M") 
+> write.csv(retval, "output.csv") 
+> dim(retval) 
+[1] 610 9 
