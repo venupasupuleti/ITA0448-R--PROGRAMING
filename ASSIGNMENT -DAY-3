@@ -1,0 +1,153 @@
+ITA 04 - Assignment - Day 3 
+1. Consider the data set occupationalStatus in the datasets package. 
+(a) What is the probability of a son having the same occupational status as his father? [Hint: investigate what diag(x) does if x is a matrix.] 
+(b) Renormalize the data so that each row sums to 1. In the new data set the ith row represents the conditional distribution of a son's occupational status given that his father has occupational status i. 
+(c) What is the probability that a son has occupational status between 1 and 3, given that his father has status 1? 
+What if the father has occupational status 8? 
+(a) To calculate the probability of a son having the same occupational status as his father, we can use the occupationalStatus dataset from the datasets package in R and calculate the proportion of fathers and sons with the same occupational status: 
+library(datasets) data(occupationalStatus) # Calculate proportion of sons with 
+the same occupational status as their fathers prop <- 
+sum(diag(occupationalStatus)) / sum(occupationalStatus) prop 
+The output shows that the probability of a son having the same occupational status as his father is 0.287743. 
+(b) To renormalize the data so that each row sums to 1, we can divide each row by the sum of that row: 
+# Renormalize data occupationalStatus_norm <- occupationalStatus / 
+rowSums (occupationalStatus) # View normalized data occupationalStatus_norm 
+The output shows the normalized data, where each row sums to 1. 
+(c) To calculate the probability that a son has occupational status between 1 and 3, given that his father has status 1, we can use the normalized data and sum the values in the first row between columns 1 and 3: 
+# Probability of son's occupational status between 1 and 3, given father has 
+status 1 prob <- sum(occupationalStatus_norm [1, 1:3]) prob 
+The output shows that the probability is 0.4421053. 
+If the father has occupational status 8, we can calculate the probability of the son's occupational status being between 1 and 3 given that his father has status 8 by summing the values in the eighth row between columns 1 and 3: 
+# Probability of son's occupational status between 1 and 3, given father has 
+status 8 prob <- sum(occupationalStatus_norm [8, 1:3]) prob 
+The output shows that the probability 
+is 0.02678571. 
+2. Create the following data frame, subsequently invert Gender for all individuals. 
+a) Name Age Height Weight Gender 
+Alex 25 177 
+57 M 
+Lilly 31 163 69 M 
+Mark 23 190 83 F 
+b) Create the below data frame 
+Name Working 
+Alex Yes 
+Lilly No Mark 
+No 
+c) Add the data frame column-wise to the previous one. How many rows and columns does the new data frame have? 
+(a) To create the data frame and subsequently invert the Gender for all individuals, we can use the following code: 
+# Create data frame df1 <- data.frame( Name c("Alex", "Lilly", "Mark"), Age = 
+c(25, 31, 23), Height = c(177, 163, 190), Weight = c(57, 69, 83), Gender = 
+c("M", "M", "F") ) # Invert Gender for all individuals df1$Gender <- 
+ifelse(df1$Gender == "M", "F", "M") # View updated data frame df1 
+The output shows the updated data frame with the Gender column inverted. 
+CSS 
+Copy code 
+Name Age Height Weight Gender 1 Alex 25 177 57 F 2 Lilly 31 163 69 F 3 Mark 23 
+190 83 M 
+(b) To create the second data frame, we can use the following code: 
+{r} 
+Copy code 
+# Create second data frame df2 <- data.frame( Name = c("Alex", "Lilly", 
+"Mark"), Working = c("Yes", "No", "No") ) # View second data frame df2 
+The output shows the second data frame. 
+Name Working 1 Alex Yes 2 Lilly No 3 Mark No 
+(c) To add the two data frames column-wise, we can use the cbind() function: 
+# Add data frames column-wise df3 <- cbind(df1, df2$Working) # Rename column 
+colnames(df3) [6] <- "Working" # View final data frame df3 
+The output shows the final data frame with the two data frames added column-wise. 
+Name Age Height Weight Gender Working 1 Alex 25 177 57 F Yes 2 Lilly 31 163 69 
+F No 3 Mark 23 190 83 M No 
+3. A student recorded his/her scores on weekly R programming quizzes that were marked out of a possible 10 points. His/Herscores were as follows: 
+8, 5, 8, 5, 7, 6, 7, 7, 5, 7, 5, 5, 6, 6, 9, 8, 9, 7, 9, 9, 6, 8, 6, 6, 7 
+What is the mode of his/her scores on the weekly R programming quizzes? 
+scores <- c(8, 5, 8, 5, 7, 6, 7, 7, 5, 7, 5, 5, 6, 6, 9, 8, 9, 7, 9, 9, 6, 8, 6, 6, 7) 
+mode(scores) 
+output -7 
+4. Construct the following data frame. 
+Countries population_in_million gdp_per_capita 
+AB 
+100 
+2000 
+В 
+200 
+7000 
+C 
+120 
+15000 
+a) Write appropriate R code and reshape the above data frame from wide data format 
+to long data format. 
+# Load tidyr package 
+library(tidyr) 
+# Create wide data frame 
+wide_df <- data.frame( 
+) 
+Countries = c("A", "B", "C"), 
+population_in_million = c(100, 200, 120), 
+gdp_per_capita = c(2000, 7000, 15000) 
+# Reshape to long data format 
+long_df <- gather(wide_df, key = "Variable", value = "Value", -Countries) 
+# View long data frame 
+2 3 4 5 
+long_df 
+output 
+Countries 
+1 
+2 
+4 
+Variable Value 
+A population_in_million 100 B population_in_million 200 C population_in_million 120 
+A gdp_per_capita 2000 
+5 
+B 
+gdp_per_capita 7000 
+6 
+C 
+gdp_per_capita 15000 
+b) Write R code and reshape from long to wide data format. 
+5. Consider the following data present. Create this file using windows notepad. Save the file 
+as input.csv using the save As All files(*.*) option in notepad. 
+id, name, salary, start_date, dept 
+1,Rick, 623.3,2012-01-01, IT 
+2, Dan,515.2,2013-09-23, Operations 3,Michelle,611,2014-11-15, IT 
+4, Ryan, 729,2014-05-11,HR 
+5, Gary,843.25, 2015-03-27, Finance 
+6, Nina, 578,2013-05-21, IT 
+7,Simon, 632.8, 2013-07-30, Operations 
+8, Guru, 722.5,2014-06-17, Finance 
+i. Use appropriate R commands to read input.csv file. 
+ii. Analyze the CSV File and compute the following. 
+a. Get the maximum salary 
+b. Get the details of the person with max salary 
+c. Get all the people working in IT department 
+d. 
+e. 
+Get the persons in IT department whose salary is greater than 600 Get the people who joined on or after 2014 
+iii. 
+Get the people who joined on or after 2014 and write the output onto a file called output.csv 
+1. To read the input.csv file, we can use the read.csv() function: 
+# Set working directory to where the input.csv file is saved 
+setwd("path/to/directory") # Read the input.csv file input_df <- 
+read.csv("input.csv", header = TRUE) 
+2. To analyze the input data and compute the required information: 
+a) To get the maximum salary, we can use the max() function: 
+# Get the maximum salary max_salary <- max(input_df$salary) # View the maximum 
+salary max_salary 
+b) To get the details of the person with the maximum salary, we can use the which() function to get the row index and then use it to subset the data frame: 
+#Get the row index of the person with the maximum salary max_salary_row <- 
+which (input_df$salary == max_salary) # Get the details of the person with the 
+maximum salary max_salary_person <- input_df[max_salary_row,] # View the 
+details of the person with the maximum salary max_salary_person 
+To get all the people working in the IT department, we can use the subset() function: 
+#Get all the people working in the IT department it_dept <- subset(input_df, 
+dept == "IT") # View the people working in the IT department it dept 
+d) To get the people in the IT department whose salary is greater than 600, we can use the subset() function with multiple conditions: 
+#Get the people in the IT department whose salary is greater than 600 
+it_dept_above_600 <- subset(input_df, dept == "IT" & salary > 600) # View the 
+people in the IT department whose salary is greater than 600 it_dept_above_600 
+e) To get the people who joined on or after 2014, we can use the subset() function with the as.Date() function to convert the start date Column to date format and then use the >= operator to filter the data: 
+# Get the people who joined on or after 2014 joined_after_2014 <- 
+subset(input_df, as.Date(start_date) >= as.Date("2014-01-01")) # View the 
+people who joined on or after 2014 joined_after_2014 
+3. To get the people who joined on or after 2014 and write the output to a file called output.csv, we can use the same code as above and then use the write.csv() function to write the output to a file: 
+# Get the people who joined on or after 2014 joined_after_2014 < 
+subset(input_df, as.Date(start_date 
